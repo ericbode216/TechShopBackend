@@ -95,11 +95,11 @@ WSGI_APPLICATION = 'TechShopBackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'techshopdb',
-        'USER': 'postgres',
-        'PASSWORD': 'Crna',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'NAME': env('PGDATABASE'),
+        'USER': env('PGUSER'),
+        'PASSWORD': env('PGPASSWORD'),
+        'HOST': env('PGHOST'),
+        'PORT': env('PGPORT'),
     }
 }
 
