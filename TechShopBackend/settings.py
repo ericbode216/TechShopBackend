@@ -34,10 +34,14 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://techshopbackend-production.up.railway.app"
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8081",
+    "https://localhost:8081",
+    "https://techshopbackend-production.up.railway.app",
+    "http://192.168.0.173:8081",
+    "https://192.168.0.173:8081",
 ]
+
 
 # Application definition
 
@@ -52,6 +56,7 @@ INSTALLED_APPS = [
     'TechShop',
     'rest_framework.authtoken',
     'storages',
+    "corsheaders",
 ]
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -63,6 +68,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",  # Must be at the very top
+    "django.middleware.common.CommonMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
